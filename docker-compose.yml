@@ -1,0 +1,37 @@
+---
+version: "3.7"
+services:
+  bookstack:
+    image: lscr.io/linuxserver/bookstack
+    container_name: bookstack
+    environment:
+      # - APP_URL=https://<yourdomain>/ # Only needed if run behind a reverse proxy
+      - PUID=1024 # The user ID of the current user
+      - PGID=100 # The group ID of the current user
+      - TZ=Europe/Amsterdam # The Timezone where you live
+      - DB_HOST=bookstack-mariadb
+      - DB_USER=bookstack
+      - DB_PASS=supersecretpassword # Change me
+      - DB_DATABASE=bookstackapp
+    volumes:
+      - /volume1/docker/config/BookStack:/config # Replace with your configuration folder
+    ports:
+      - 6543:80
+    restart: unless-stopped
+    depends_on:
+      - bookstack-mariadb
+
+  bookstack-mariadb:
+    image: lscr.io/linuxserver/mariadb
+    container_name: bookstack-mariadb
+    environment:
+      - PUID=1024 # The user ID of the current user
+      - PGID=100 # The group ID of the current user
+      - TZ=Europe/Amsterdam # The Timezone where you live
+      - MYSQL_ROOT_PASSWORD=supersecretpassword # Change me
+      - MYSQL_DATABASE=bookstackapp
+      - MYSQL_USER=bookstack
+      - MYSQL_PASSWORD=supersecretpassword # Change me
+    volumes:
+      - /volume1/docker/config/BookStackMariaDB:/config # Replace with your configuration folder
+    restart: unless-stopped
