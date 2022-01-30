@@ -21,4 +21,4 @@ Password: `password`
 You should change that as soon as possible.
 
 ## For More Information
-For a more in depth guide on how this works, you can go to [selfhostedheaven.com](https://selfhostedheaven.com/).
+For a more in depth guide on how this works, you can go to [selfhostedheaven.com](https://selfhostedheaven.com/posts/20220130-personal-wiki-bookstack/).
