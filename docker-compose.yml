@@ -5,7 +5,7 @@ services:
     image: lscr.io/linuxserver/bookstack
     container_name: bookstack
     environment:
-      # - APP_URL=https://<yourdomain>/ # Only needed if run behind a reverse proxy
+      - APP_URL=http://127.0.0.1:6543 # Change this to https://<yourdomain>/ when ran behind a reverse proxy.
       - PUID=1024 # The user ID of the current user
       - PGID=100 # The group ID of the current user
       - TZ=Europe/Amsterdam # The Timezone where you live
